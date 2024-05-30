@@ -30,7 +30,7 @@ fun MainScreen() {
         verticalArrangement = Arrangement.SpaceAround
     ) {
 
-        CircleScanCard(problems = 12){
+        CircleScanCard(problems = 12) {
 
         }
 
@@ -55,7 +55,11 @@ fun MainScreen() {
             )
         }
 
-        RectangleDashboardCard()
+        RectangleDashboardCard(
+            iconImage = painterResource(id = R.drawable.ic_object_scan),
+            primaryText = stringResource(id = R.string.device_info),
+            secondaryText = stringResource(id = R.string.show_you_all_info)
+        )
 
 
     }

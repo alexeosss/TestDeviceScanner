@@ -6,4 +6,5 @@
     <string name="check_for_viruses">Check for Viruses</string>
     <string name="check">Check</string>
     <string name="problems">Problems</string>
+    <string name="device_info">Device info</string>
 </resources>
