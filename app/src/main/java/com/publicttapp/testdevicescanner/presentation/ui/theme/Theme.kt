@@ -1,4 +1,4 @@
-package com.publicttapp.testdevicescanner.ui.theme
+package com.publicttapp.testdevicescanner.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

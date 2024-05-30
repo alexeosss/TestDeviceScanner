@@ -1,4 +1,4 @@
-package com.publicttapp.testdevicescanner.ui.theme
+package com.publicttapp.testdevicescanner.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
