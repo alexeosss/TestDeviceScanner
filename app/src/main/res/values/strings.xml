@@ -8,4 +8,10 @@
     <string name="problems">Problems</string>
     <string name="device_info">Device info</string>
     <string name="dashboard">Dashboard</string>
+    <string name="calibration_of_sensors">Calibrations of sensors</string>
+    <string name="app_monitoring">App monitoring</string>
+    <string name="antivirus">AntiVirus</string>
+    <string name="device_memory_info">Device Memory Information</string>
+    <string name="file_mananger">File Manager</string>
+    <string name="battery_info">Battery Info</string>
 </resources>

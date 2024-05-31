@@ -3,6 +3,7 @@ package com.publicttapp.testdevicescanner.presentation.screens.main
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,6 +36,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
@@ -115,9 +118,11 @@ fun MainScreen() {
             )
         }
 
+        var startHeight by remember { mutableStateOf(550.dp) }
+
         Column(
             modifier = Modifier
-                .padding(top = 550.dp)
+                .padding(top = startHeight)
                 .fillMaxWidth()
                 .height(820.dp)
                 .align(Alignment.BottomCenter)
@@ -128,23 +133,42 @@ fun MainScreen() {
                         bottomStart = 0.dp,
                         bottomEnd = 0.dp
                     )
-                ).background(MaterialTheme.colorScheme.onSecondary),
+                )
+                .background(MaterialTheme.colorScheme.onSecondary),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Box(
-                modifier = Modifier
-                    .padding(top = 8.dp, bottom = 16.dp)
-                    .size(53.dp, 6.dp)
-                    .clip(RoundedCornerShape(26.dp))
-                    .background(Color(0xFFDFE1E5))
-            )
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .pointerInput(Unit) {
+                        detectDragGestures(
+                            onDrag = { change, dragAmount ->
+                                startHeight = when {
+                                    startHeight + dragAmount.y.toDp() in 100.dp..550.dp -> startHeight + dragAmount.y.toDp()
+                                    startHeight + dragAmount.y.toDp() < 100.dp -> 100.dp
+                                    else -> 550.dp
+                                }
 
-            Text(
-                text = stringResource(id = R.string.dashboard),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
-            )
+                            }
+                        )
+                    }, horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Box(
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 16.dp)
+                        .size(53.dp, 6.dp)
+                        .clip(RoundedCornerShape(26.dp))
+                        .background(Color(0xFFDFE1E5))
+                )
+
+                Text(
+                    text = stringResource(id = R.string.dashboard),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer
+                )
+            }
+
 
             LazyColumn(
                 Modifier
@@ -154,26 +178,63 @@ fun MainScreen() {
             ) {
                 item {
                     RectangleDashboardCard(
-                        iconImage = painterResource(id = R.drawable.ic_object_scan),
+                        iconImage = painterResource(id = R.drawable.ic_info_square),
                         primaryText = stringResource(id = R.string.device_info),
-                        secondaryText = stringResource(id = R.string.show_you_all_info)
-                    )
+                        secondaryText = stringResource(id = R.string.show_you_all_info),
+                        0
+                    ){}
                 }
                 item {
-
+                    RectangleDashboardCard(
+                        iconImage = painterResource(id = R.drawable.ic_smartphone_rotate_angle),
+                        primaryText = stringResource(id = R.string.calibration_of_sensors),
+                        secondaryText = stringResource(id = R.string.show_you_all_info),
+                        1
+                    ){}
+                }
+                item {
                     RectangleDashboardCard(
                         iconImage = painterResource(id = R.drawable.ic_object_scan),
-                        primaryText = stringResource(id = R.string.device_info),
-                        secondaryText = stringResource(id = R.string.show_you_all_info)
-                    )
+                        primaryText = stringResource(id = R.string.app_monitoring),
+                        secondaryText = stringResource(id = R.string.show_you_all_info),
+                        2
+                    ){}
+                }
+                item {
+                    RectangleDashboardCard(
+                        iconImage = painterResource(id = R.drawable.ic_virus_filled),
+                        primaryText = stringResource(id = R.string.antivirus),
+                        secondaryText = stringResource(id = R.string.show_you_all_info),
+                        3
+                    ){}
+                }
+                item {
+                    RectangleDashboardCard(
+                        iconImage = painterResource(id = R.drawable.ic_library),
+                        primaryText = stringResource(id = R.string.device_memory_info),
+                        secondaryText = stringResource(id = R.string.show_you_all_info),
+                        0
+                    ){}
+                }
+                item {
+                    RectangleDashboardCard(
+                        iconImage = painterResource(id = R.drawable.ic_file_smile),
+                        primaryText = stringResource(id = R.string.file_mananger),
+                        secondaryText = stringResource(id = R.string.show_you_all_info),
+                        5
+                    ){}
+                }
+                item {
+                    RectangleDashboardCard(
+                        iconImage = painterResource(id = R.drawable.ic_battery_full),
+                        primaryText = stringResource(id = R.string.battery_info),
+                        secondaryText = stringResource(id = R.string.show_you_all_info),
+                        6
+                    ){}
                 }
             }
-
         }
-
-
     }
-
 }
 
 @Composable

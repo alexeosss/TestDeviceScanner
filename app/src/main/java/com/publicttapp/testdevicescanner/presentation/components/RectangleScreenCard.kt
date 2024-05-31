@@ -31,7 +31,7 @@ fun RectangleScreenCard(
     iconImage: Painter,
     primaryText: String,
     secondaryText: String,
-    buttonText: String
+    buttonText: String,
 ) {
     Card(
         modifier = Modifier.size(167.dp, 213.dp),
