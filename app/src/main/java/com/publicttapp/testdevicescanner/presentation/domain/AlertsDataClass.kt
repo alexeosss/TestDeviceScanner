@@ -1,7 +1,5 @@
 package com.publicttapp.testdevicescanner.presentation.domain
 
-import androidx.room.ColumnInfo
-
 data class AlertsDataClass(
     var id: Int = 0,
     var deviceInfo: Int = 0,

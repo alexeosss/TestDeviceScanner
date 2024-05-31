@@ -10,12 +10,12 @@ interface LocalDataSource {
 
 
     @Query("SELECT * FROM alerts_table")
-    fun getAllAlerts(): AlertsEntity
+    fun getAllAlerts(): List<AlertsEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = AlertsEntity::class)
     fun addAllAlerts(data: AlertsEntity)
 
-    @Query("UPDATE alerts_table SET device_info = :deviceInfo, calibration_of_sensors = :calibrationOfSensors, app_monitoring= :appMonitoring, antivirus= :antivirus, device_memory_info= :deviceMemoryInfo, file_manager= :fileManager, battery_info= :batteryInfo WHERE id = 0")
+    @Query("UPDATE alerts_table SET device_info = :deviceInfo, calibration_of_sensors = :calibrationOfSensors, app_monitoring= :appMonitoring, antivirus= :antivirus, device_memory_info= :deviceMemoryInfo, file_manager= :fileManager, battery_info= :batteryInfo WHERE id = 1")
     fun updateAlerts(
         deviceInfo: Int,
         calibrationOfSensors: Int,

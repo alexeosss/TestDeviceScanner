@@ -1,6 +1,5 @@
 package com.publicttapp.testdevicescanner.data
 
-import android.app.ApplicationErrorReport.BatteryInfo
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey

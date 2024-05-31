@@ -3,8 +3,8 @@ package com.publicttapp.testdevicescanner.data
 import com.publicttapp.testdevicescanner.presentation.domain.AlertsDataClass
 
 class RepositoryImpl(private val localDataSource: LocalDataSource) : Repository {
-    override suspend fun getAllAlerts(): AlertsDataClass {
-        return localDataSource.getAllAlerts().let {
+    override suspend fun getAllAlerts(): List<AlertsDataClass> {
+        return localDataSource.getAllAlerts().map {
             AlertsDataClass(
                 it.id,
                 it.deviceInfo,

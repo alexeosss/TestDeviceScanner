@@ -5,7 +5,7 @@ import com.publicttapp.testdevicescanner.presentation.domain.AlertsDataClass
 
 interface Repository {
 
-    suspend fun getAllAlerts(): AlertsDataClass
+    suspend fun getAllAlerts(): List<AlertsDataClass>
 
     suspend fun addAllAlerts(data: AlertsDataClass)
 
