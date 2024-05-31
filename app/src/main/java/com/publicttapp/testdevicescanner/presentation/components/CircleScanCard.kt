@@ -29,7 +29,9 @@ import com.publicttapp.testdevicescanner.R
 fun CircleScanCard(problems: Int, onClick: () -> Unit) {
 
     Button(
-        onClick = onClick,
+        onClick = {
+            println("click")
+            onClick.invoke()},
         modifier = Modifier.size(224.dp),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
         shape = CircleShape,
